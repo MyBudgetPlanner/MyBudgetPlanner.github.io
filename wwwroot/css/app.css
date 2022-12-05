@@ -1,0 +1,1044 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    z-index: 1;
+    color: black;
+    text-decoration: 0;
+}
+
+#blazor-error-ui {
+    display: none;
+}
+
+canvas {
+    margin: 2rem 0;
+}
+
+@font-face {
+    font-family: "Material Symbols Outlined";
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v63/kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY43zj-jCxv3fzvRNU22ZXGJpEpjC_1n-q_4MrImHCIJIZrDCvHOej.woff2) format("woff2");
+}
+
+.GI {
+    font-family: "Material Symbols Outlined";
+}
+
+.right {
+    position: absolute;
+    right: 0;
+}
+
+h2 {
+    color: #033062;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    text-transform: capitalize;
+}
+
+body {
+    padding: 1em;
+    padding-top: 3rem;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    border-bottom: 1px solid #a5a5a5;
+    z-index: 99;
+}
+
+    nav a {
+        flex-basis: 33%;
+        text-align: center;
+        padding: 0.75rem 1rem;
+        position: relative;
+        font-size: 1.25rem;
+        color: #033062;
+    }
+
+        nav a.active::after {
+            content: "";
+            border-bottom: 3px solid #0099e0;
+            position: absolute;
+            bottom: -1.5px;
+            left: 0;
+            width: 100%;
+            display: inline-block;
+        }
+
+.move {
+    margin-top: 1rem;
+}
+
+    .move section {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        padding: 2.5px;
+        border-radius: 20px;
+        box-shadow: 0 0 5px -2px black;
+        margin: 0.25rem 0;
+    }
+
+        .move section .icon {
+            height: 35px;
+            width: 35px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+            .move section .icon span {
+                font-family: "Material Icons";
+                font-size: 17px;
+                display: inline-block;
+                height: 50%;
+                width: 50%;
+                color: white;
+            }
+
+.settings p {
+    margin-top: 0.75rem;
+}
+
+b {
+    font-weight: 500;
+    color: #033062;
+}
+
+.negative {
+    color: red;
+}
+
+.positive {
+    color: green;
+}
+
+.transaction {
+    background-color: white;
+    box-shadow: 0 0 5px -2px black;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+    .transaction.selected {
+        background-color: #033062;
+    }
+
+        .transaction.selected h3, .transaction.selected p {
+            color: white;
+        }
+
+    .transaction .icon {
+        height: 35px;
+        width: 35px;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-right: 0.5rem;
+        cursor: pointer;
+        user-select: none;
+    }
+
+        .transaction .icon span {
+            font-family: "Material Icons";
+            font-size: 17px;
+            display: inline-block;
+            height: 50%;
+            width: 50%;
+            color: white;
+        }
+
+    .transaction section {
+        flex-grow: 1;
+    }
+
+        .transaction section h3 {
+            position: relative;
+            font-size: 1rem;
+            color: #033062;
+        }
+
+            .transaction section h3 .Amount {
+                position: absolute;
+                right: 0;
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
+
+        .transaction section p {
+            font-size: 0.8rem;
+        }
+
+    .transaction::after {
+        content: "edit";
+        font-family: "Material Symbols Outlined";
+        color: #033062;
+        position: absolute;
+        bottom: 2px;
+        right: 2px;
+        font-size: 0.8rem;
+    }
+
+.folder {
+    padding: 0 0 0.5em 0;
+    border-radius: 0.5rem;
+    margin: 0 0.5rem;
+    margin-bottom: 1rem;
+    transition: all 0.2s ease;
+}
+
+    .folder .budget {
+        color: white;
+        font-weight: 300;
+        font-size: 0.8rem;
+    }
+
+    .folder.selected {
+        box-shadow: 0 0 5px -2px black;
+    }
+
+        .folder.selected .icon {
+            border-radius: 0.5rem 0.5rem 0 0;
+        }
+
+    .folder:hover {
+        box-shadow: 0 0 5px -2px black;
+    }
+
+    .folder .icon {
+        padding: 0.25em 0.75em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0.5rem;
+        cursor: pointer;
+    }
+
+        .folder .icon span {
+            font-family: "Material Symbols Outlined";
+            font-size: 48px;
+            display: inline-block;
+            color: white;
+        }
+
+    .folder p {
+        font-weight: 600;
+        color: white;
+    }
+
+    .folder h3 {
+        text-align: center;
+        font-size: small;
+        display: inline-block;
+        width: 100%;
+    }
+
+.account {
+    background-color: white;
+    box-shadow: 0 0 5px -2px black;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+    .account .icon {
+        height: 75px;
+        width: 75px;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-right: 0.5rem;
+        cursor: pointer;
+        user-select: none;
+    }
+
+        .account .icon img {
+            width: 100%;
+            height: 100%;
+        }
+
+    .account section {
+        padding: 0.5em 0;
+        flex-grow: 1;
+    }
+
+        .account section h3 {
+            position: relative;
+            font-size: 1rem;
+            color: #033062;
+        }
+
+            .account section h3 .Amount {
+                position: absolute;
+                right: 0;
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
+
+        .account section p {
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            color: grey;
+        }
+
+    .account b {
+        padding: 0.5em 0;
+        white-space: nowrap;
+    }
+
+.all-folders {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    flex-wrap: wrap;
+    flex-grow: 0;
+    justify-content: flex-start;
+    margin: auto auto;
+}
+
+    .all-folders .folder {
+        flex-basis: 100px;
+        flex-grow: 0;
+    }
+
+        .all-folders .folder .icon {
+            aspect-ratio: 1/1;
+        }
+
+.all-transactions {
+    margin-top: 0.5em;
+    margin-bottom: 1.5rem;
+}
+
+.bg-blue {
+    background: linear-gradient(315deg, #0099e0, #66cfff);
+}
+
+.bg-green {
+    background: linear-gradient(315deg, #70e000, #b3ff66);
+}
+
+.bg-yellow {
+    background: linear-gradient(315deg, #e0a800, #ffd966);
+}
+
+.bg-red {
+    background: linear-gradient(315deg, #e00400, #ff6966);
+}
+
+.bg-grey {
+    background: linear-gradient(315deg, #707070, #b3b3b3);
+}
+
+.bg-mint {
+    background: linear-gradient(315deg, #00e0ce, #66fff2);
+}
+
+.bg-purple {
+    background: linear-gradient(315deg, #bb00e0, #e666ff);
+}
+
+.bg-pink {
+    background: linear-gradient(315deg, #2500e0, #8066ff);
+}
+
+.bg-white {
+    background: linear-gradient(315deg, #e6e6e6, #cccccc);
+}
+
+.bar {
+    width: 100%;
+    height: 1em;
+    border-radius: 0.5em;
+    overflow: hidden;
+    margin-top: 1em;
+    white-space: none;
+    display: flex;
+    position: relative;
+    max-width: 100%;
+}
+
+    .bar div {
+        flex-shrink: 1;
+        flex-grow: 1;
+    }
+
+    .bar .content {
+        position: absolute;
+        height: 100%;
+        padding: 0.25em;
+    }
+
+        .bar .content div {
+            border-radius: 100vw;
+            background-color: white;
+            height: 0.5em;
+            width: 100%;
+        }
+
+@media screen and (min-width: 740px) {
+    #Index {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+        align-items: flex-start;
+    }
+
+    .Folders-container {
+        height: calc(100vh - 4rem);
+        top: 3rem;
+        overflow-y: auto;
+        max-width: 375px;
+    }
+}
+
+.legend .circle {
+    display: inline-block;
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+    position: relative;
+    top: 0.2rem;
+}
+
+.legend .amount {
+    float: right;
+}
+
+.legend .div {
+    flex-basis: 50%;
+    flex-grow: 1;
+}
+
+.legend .edit {
+    height: 1.5rem;
+    width: 1.5rem;
+    top: 0.5rem;
+}
+
+    .legend .edit::after {
+        content: "edit";
+        font-family: "Material Symbols Outlined";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+    }
+
+.shadow {
+    box-shadow: 0 0 10px -2px black;
+}
+
+.pop-up {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    box-shadow: 0 0 5px -2px black;
+    padding: 1em;
+    border-radius: 0.5rem;
+}
+
+    .pop-up input {
+        display: block;
+        border-radius: 0.5em;
+        text-align: center;
+        margin: 0.5rem 0;
+        padding: 0.5em;
+    }
+
+    .pop-up .buttons {
+        display: flex;
+    }
+
+    .pop-up .colours {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.25rem;
+        margin: 0.5rem 0;
+    }
+
+    .pop-up .circle {
+        height: 1.5rem;
+        width: 1.5rem;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+        .pop-up .circle.selected {
+            box-shadow: 0 0 10px -2px;
+        }
+
+    .pop-up button {
+        text-align: center;
+        width: 100%;
+        margin: 0.5rem 0;
+        color: white;
+        background-color: #0099e0;
+        border: none;
+        border-radius: 0.5em;
+        padding: 0.5em;
+        border: 2px solid white;
+        transition: 0.5s ease;
+        transition-property: background-color;
+        cursor: pointer;
+    }
+
+        .pop-up button:hover {
+            background-color: #033062;
+        }
+
+        .pop-up button:active {
+            background-color: #033062;
+            border: 2px solid #0099e0;
+        }
+
+/*# sourceMappingURL=style.css.map */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    z-index: 1;
+    color: black;
+    text-decoration: 0;
+}
+
+#blazor-error-ui {
+    display: none;
+}
+
+canvas {
+    margin: 2rem 0;
+}
+
+@font-face {
+    font-family: "Material Symbols Outlined";
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v63/kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY43zj-jCxv3fzvRNU22ZXGJpEpjC_1n-q_4MrImHCIJIZrDCvHOej.woff2) format("woff2");
+}
+
+.GI {
+    font-family: "Material Symbols Outlined";
+}
+
+.right {
+    position: absolute;
+    right: 0;
+}
+
+h2 {
+    color: #033062;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    text-transform: capitalize;
+}
+
+body {
+    padding: 1em;
+    padding-top: 3rem;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    border-bottom: 1px solid #a5a5a5;
+    z-index: 99;
+}
+
+    nav a {
+        flex-basis: 33%;
+        text-align: center;
+        padding: 0.75rem 1rem;
+        position: relative;
+        font-size: 1.25rem;
+        color: #033062;
+    }
+
+        nav a.active::after {
+            content: "";
+            border-bottom: 3px solid #0099e0;
+            position: absolute;
+            bottom: -1.5px;
+            left: 0;
+            width: 100%;
+            display: inline-block;
+        }
+
+.move {
+    margin-top: 1rem;
+}
+
+    .move section {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        padding: 2.5px;
+        border-radius: 20px;
+        box-shadow: 0 0 5px -2px black;
+        margin: 0.25rem 0;
+    }
+
+        .move section .icon {
+            height: 35px;
+            width: 35px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+            .move section .icon span {
+                font-family: "Material Icons";
+                font-size: 17px;
+                display: inline-block;
+                height: 50%;
+                width: 50%;
+                color: white;
+            }
+
+.settings p {
+    margin-top: 0.75rem;
+}
+
+b {
+    font-weight: 500;
+    color: #033062;
+}
+
+.negative {
+    color: red;
+}
+
+.positive {
+    color: green;
+}
+
+.transaction {
+    background-color: white;
+    box-shadow: 0 0 5px -2px black;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+    .transaction.selected {
+        background-color: #033062;
+    }
+
+        .transaction.selected h3, .transaction.selected p {
+            color: white;
+        }
+
+    .transaction .icon {
+        height: 35px;
+        width: 35px;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-right: 0.5rem;
+        cursor: pointer;
+        user-select: none;
+    }
+
+        .transaction .icon span {
+            font-family: "Material Icons";
+            font-size: 17px;
+            display: inline-block;
+            height: 50%;
+            width: 50%;
+            color: white;
+        }
+
+    .transaction section {
+        flex-grow: 1;
+    }
+
+        .transaction section h3 {
+            position: relative;
+            font-size: 1rem;
+            color: #033062;
+        }
+
+            .transaction section h3 .Amount {
+                position: absolute;
+                right: 0;
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
+
+        .transaction section p {
+            font-size: 0.8rem;
+        }
+
+    .transaction::after {
+        content: "edit";
+        font-family: "Material Symbols Outlined";
+        color: #033062;
+        position: absolute;
+        bottom: 2px;
+        right: 2px;
+        font-size: 0.8rem;
+    }
+
+.folder {
+    padding: 0 0 0.5em 0;
+    border-radius: 0.5rem;
+    margin: 0 0.5rem;
+    margin-bottom: 1rem;
+    transition: all 0.2s ease;
+}
+
+    .folder .budget {
+        color: white;
+        font-weight: 300;
+        font-size: 0.8rem;
+    }
+
+    .folder.selected {
+        box-shadow: 0 0 5px -2px black;
+    }
+
+        .folder.selected .icon {
+            border-radius: 0.5rem 0.5rem 0 0;
+        }
+
+    .folder:hover {
+        box-shadow: 0 0 5px -2px black;
+    }
+
+    .folder .icon {
+        padding: 0.25em 0.75em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0.5rem;
+        cursor: pointer;
+    }
+
+        .folder .icon span {
+            font-family: "Material Symbols Outlined";
+            font-size: 48px;
+            display: inline-block;
+            color: white;
+        }
+
+    .folder p {
+        font-weight: 600;
+        color: white;
+    }
+
+    .folder h3 {
+        text-align: center;
+        font-size: small;
+        display: inline-block;
+        width: 100%;
+    }
+
+.account {
+    background-color: white;
+    box-shadow: 0 0 5px -2px black;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+    .account .icon {
+        height: 75px;
+        width: 75px;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-right: 0.5rem;
+        cursor: pointer;
+        user-select: none;
+    }
+
+        .account .icon img {
+            width: 100%;
+            height: 100%;
+        }
+
+    .account section {
+        padding: 0.5em 0;
+        flex-grow: 1;
+    }
+
+        .account section h3 {
+            position: relative;
+            font-size: 1rem;
+            color: #033062;
+        }
+
+            .account section h3 .Amount {
+                position: absolute;
+                right: 0;
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
+
+        .account section p {
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            color: grey;
+        }
+
+    .account b {
+        padding: 0.5em 0;
+        white-space: nowrap;
+    }
+
+.all-folders {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    flex-wrap: wrap;
+    flex-grow: 0;
+    justify-content: flex-start;
+    margin: auto auto;
+}
+
+    .all-folders .folder {
+        flex-basis: 100px;
+        flex-grow: 0;
+    }
+
+        .all-folders .folder .icon {
+            aspect-ratio: 1/1;
+        }
+
+.all-transactions {
+    margin-top: 0.5em;
+    margin-bottom: 1.5rem;
+}
+
+.bg-blue {
+    background: linear-gradient(315deg, #0099e0, #66cfff);
+}
+
+.bg-green {
+    background: linear-gradient(315deg, #70e000, #b3ff66);
+}
+
+.bg-yellow {
+    background: linear-gradient(315deg, #e0a800, #ffd966);
+}
+
+.bg-red {
+    background: linear-gradient(315deg, #e00400, #ff6966);
+}
+
+.bg-grey {
+    background: linear-gradient(315deg, #707070, #b3b3b3);
+}
+
+.bg-mint {
+    background: linear-gradient(315deg, #00e0ce, #66fff2);
+}
+
+.bg-purple {
+    background: linear-gradient(315deg, #bb00e0, #e666ff);
+}
+
+.bg-pink {
+    background: linear-gradient(315deg, #2500e0, #8066ff);
+}
+
+.bg-white {
+    background: linear-gradient(315deg, #e6e6e6, #cccccc);
+}
+
+.bar {
+    width: 100%;
+    height: 1em;
+    border-radius: 0.5em;
+    overflow: hidden;
+    margin-top: 1em;
+    white-space: none;
+    display: flex;
+    position: relative;
+    max-width: 100%;
+}
+
+    .bar div {
+        flex-shrink: 1;
+        flex-grow: 1;
+    }
+
+    .bar .content {
+        position: absolute;
+        height: 100%;
+        padding: 0.25em;
+    }
+
+        .bar .content div {
+            border-radius: 100vw;
+            background-color: white;
+            height: 0.5em;
+            width: 100%;
+        }
+
+@media screen and (min-width: 740px) {
+    #Index {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+        align-items: flex-start;
+    }
+
+    .Folders-container {
+        height: calc(100vh - 4rem);
+        top: 3rem;
+        overflow-y: auto;
+        max-width: 375px;
+    }
+}
+
+.legend .circle {
+    display: inline-block;
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+    position: relative;
+    top: 0.2rem;
+}
+
+.legend .amount {
+    float: right;
+}
+
+.legend .div {
+    flex-basis: 50%;
+    flex-grow: 1;
+}
+
+.legend .edit {
+    height: 1.5rem;
+    width: 1.5rem;
+    top: 0.5rem;
+}
+
+    .legend .edit::after {
+        content: "edit";
+        font-family: "Material Symbols Outlined";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+    }
+
+.shadow {
+    box-shadow: 0 0 10px -2px black;
+}
+
+.pop-up {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    box-shadow: 0 0 5px -2px black;
+    padding: 1em;
+    border-radius: 0.5rem;
+}
+
+    .pop-up input {
+        display: block;
+        border-radius: 0.5em;
+        text-align: center;
+        margin: 0.5rem 0;
+        padding: 0.5em;
+    }
+
+    .pop-up .buttons {
+        display: flex;
+    }
+
+    .pop-up .colours {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.25rem;
+        margin: 0.5rem 0;
+    }
+
+    .pop-up .circle {
+        height: 1.5rem;
+        width: 1.5rem;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+        .pop-up .circle.selected {
+            box-shadow: 0 0 10px -2px;
+        }
+
+    .pop-up button {
+        text-align: center;
+        width: 100%;
+        margin: 0.5rem 0;
+        color: white;
+        background-color: #0099e0;
+        border: none;
+        border-radius: 0.5em;
+        padding: 0.5em;
+        border: 2px solid white;
+        transition: 0.5s ease;
+        transition-property: background-color;
+        cursor: pointer;
+    }
+
+        .pop-up button:hover {
+            background-color: #033062;
+        }
+
+        .pop-up button:active {
+            background-color: #033062;
+            border: 2px solid #0099e0;
+        }
+
+/*# sourceMappingURL=style.css.map */

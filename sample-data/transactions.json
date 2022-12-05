@@ -1,0 +1,46 @@
+[
+  {
+    "name": "Shopping",
+    "value": 0,
+    "icon": "shopping_bag",
+    "color": "red",
+    "transactions": [
+      {
+        "id": "0001",
+        "name": "maandelijkse toevoeging",
+        "sender": "intern",
+        "date": "2018-05-01",
+        "amount": 125.5
+      },
+      {
+        "id": "0002",
+        "name": "maandelijkse toevoeging",
+        "sender": "intern",
+        "date": "2018-06-01",
+        "amount": 125.5
+      }
+    ]
+  },
+  {
+    "name": "Shopping",
+    "value": 0,
+    "icon": "shopping_bag",
+    "color": "blue",
+    "transactions": [
+      {
+        "id": "0001",
+        "name": "maandelijkse toevoeging",
+        "sender": "intern",
+        "date": "2018-05-01",
+        "amount": 125.5
+      },
+      {
+        "id": "0002",
+        "name": "maandelijkse toevoeging",
+        "sender": "intern",
+        "date": "2018-06-01",
+        "amount": 125.5
+      }
+    ]
+  }
+]
